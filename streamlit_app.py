@@ -1,38 +1,54 @@
-from collections import namedtuple
-import altair as alt
-import math
-import pandas as pd
 import streamlit as st
 
-"""
-# Welcome to Streamlit!
+from pathlib import Path
+from streamlit.components.v1.components import declare_component
+from streamlit_pandas_profiling.version import __release__, __version__
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
+if __release__:
+    _source = {"path": (Path(__file__).parent/"frontend"/"build").resolve()}
+else:
+    _source = {"url": "http://localhost:3001"}
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
-
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+_render_component = declare_component("streamlit_pandas_profiling", **_source)
 
 
-with st.echo(code_location='below'):
-    total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
-    num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
+def st_profile_report(report, height=None, navbar=True, key=None):
+    """Display a profile report.
 
-    Point = namedtuple('Point', 'x y')
-    data = []
+    Parameters
+    ----------
+    report : pandas_profiling.ProfileReport
+        The profile report instance to display.
+    height : int or None
+        Report height. If set to None, report will take full height, but
+        navbar will be disabled. Defaults to None.
+    navbar : boolean
+        Show navbar if height is fixed.
+    key : str or None
+        An optional key that uniquely identifies this component. If this is
+        None, and the component's arguments are changed, the component will
+        be re-mounted in the Streamlit frontend and lose its current state.
 
-    points_per_turn = total_points / num_turns
+    """
+    config = {
+        "inline": True,
+        "minify_html": True,
+        "use_local_assets": True,
+        "navbar_show": navbar if height is not None else False,
+        "style": {
+            "full_width": True
+        }
+    }
 
-    for curr_point_num in range(total_points):
-        curr_turn, i = divmod(curr_point_num, points_per_turn)
-        angle = (curr_turn + 1) * 2 * math.pi * i / points_per_turn
-        radius = curr_point_num / total_points
-        x = radius * math.cos(angle)
-        y = radius * math.sin(angle)
-        data.append(Point(x, y))
+    with st.spinner("Generating profile report..."):
+        try:
+            report.set_variable("html", config)
+        except AttributeError:
+            # Since Pandas Profiling 3.0.0
+            report.config.html.inline = config["inline"]
+            report.config.html.minify_html = config["minify_html"]
+            report.config.html.use_local_assets = config["use_local_assets"]
+            report.config.html.navbar_show = config["navbar_show"]
+            report.config.html.full_width = config["style"]["full_width"]
 
-    st.altair_chart(alt.Chart(pd.DataFrame(data), height=500, width=500)
-        .mark_circle(color='#0068c9', opacity=0.5)
-        .encode(x='x:Q', y='y:Q'))
+        _render_component(html=report.to_html(), height=height, key=key, default=None)
