@@ -15,7 +15,7 @@ st.dataframe(data_front)
 
 AgGrid(data_front)
 
-gb = GridOptionsBuilder.from_dataframe(data)
+gb = GridOptionsBuilder.from_dataframe(data_front)
 gb.configure_pagination(paginationAutoPageSize=True) #Add pagination
 gb.configure_side_bar() #Add a sidebar
 gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children") #Enable multi-row selection
@@ -34,5 +34,5 @@ grid_response = AgGrid(
     reload_data=True
 )
 
-data = grid_response['data']
+data_front = grid_response['data']
 selected = grid_response['selected_rows'] 
