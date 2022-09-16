@@ -12,6 +12,6 @@ data_front = data_front.astype(str)
 
 st.dataframe(data_front)
 
-time_spent = data_front.groupby(["Location"]).BMS.agg()
+time_spent = data_front.groupby(data_front.Location, data_front.BMS)
 st.dataframe(time_spent)
 st.bar_chart(time_spent)
