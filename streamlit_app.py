@@ -34,6 +34,6 @@ grid_response = AgGrid(
     reload_data=True
 )
 
-data_front = grid_response['data']
+data_front = grid_response['data_front']
 selected = grid_response['selected_rows'] 
 df = pd.DataFrame(selected)
