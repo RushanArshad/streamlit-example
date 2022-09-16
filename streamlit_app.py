@@ -37,3 +37,6 @@ grid_response = AgGrid(
 data_front = grid_response['data_front']
 selected = grid_response['selected_rows'] 
 df = pd.DataFrame(selected)
+
+chart_data = data_front['Location',['BMS'].sum()]
+st.line_chart(chart_data)
