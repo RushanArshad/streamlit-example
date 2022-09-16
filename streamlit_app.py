@@ -13,5 +13,6 @@ data_front = data_front.astype(str)
 st.dataframe(data_front)
 
 time_spent = data_front.groupby(["Location", "BMS"])
+time_spent = time_spent.astype(str)
 st.dataframe(time_spent)
 st.line_chart(time_spent)
