@@ -11,7 +11,7 @@ data_till = pd.read_excel('Data Summary.xlsx', sheet_name = 'Data-Till Activity 
 
 data_front = data_front.astype(str)
 
-st.dataframe(data_front).head()
+st.dataframe(data_front)
 
 time_spent = data_front.groupby(["Location"]).BMS.sum().reset_index()
 AgGrid(data_front)
