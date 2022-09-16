@@ -13,7 +13,7 @@ data_front = data_front.astype(str)
 
 st.dataframe(data_front)
 
-AgGrid(data_front)
+
 
 gb = GridOptionsBuilder.from_dataframe(data_front)
 gb.configure_pagination(paginationAutoPageSize=True) #Add pagination
