@@ -38,5 +38,5 @@ data_front = grid_response['data']
 selected = grid_response['selected_rows'] 
 df = pd.DataFrame(selected)
 
-chart_data = data_front['Location',['BMS'].sum()]
-st.line_chart(chart_data)
+time_spent = data_front.groupby(["Location"]).BMS.sum().reset_index()
+st.line_chart(time_spent)
