@@ -14,4 +14,4 @@ st.dataframe(data_front)
 
 time_spent = data_front.groupby(["Location"]).BMS.sum().reset_index()
 st.dataframe(time_spent)
-st.line_chart(time_spent
+st.line_chart(time_spent)
