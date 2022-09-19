@@ -45,4 +45,4 @@ df = pd.DataFrame(selected)
 #st.line_chart(selected)
 
 if st.button("Generate Chart"):
-    st.bar_chart(data_till[‘BMS’])
+    st.bar_chart(data_till["BMS"])
