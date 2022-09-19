@@ -44,4 +44,4 @@ df = pd.DataFrame(selected)
 #char_df= pd.DataFrame(a1,a2)
 #st.line_chart(selected)
 
-st.map(data='data_front', zoom=None, use_container_width=True)
+st.bar_chart(data='data_front', x='Location', y='BMS', width=5, height=5, use_container_width=True)
