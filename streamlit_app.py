@@ -42,4 +42,4 @@ df = pd.DataFrame(selected)
 #a1 = data_front["Location"]
 #a2 = data_front["BMS"].sum()
 #char_df= pd.DataFrame(a1,a2)
-st.line_chart(selected)
+#st.line_chart(selected)
