@@ -11,10 +11,10 @@ data_till = pd.read_excel('Data Summary.xlsx', sheet_name = 'Data-Till Activity 
 
 data_front = data_front.astype(str)
 
-if st.button("Populate Data")
+if st.button("Populate Data"):
     st.dataframe(data_front)
 
-if st.button("Populate Grid Data")
+if st.button("Populate Grid Data"):
 
     gb = GridOptionsBuilder.from_dataframe(data_front)
     gb.configure_pagination(paginationAutoPageSize=True) #Add pagination
