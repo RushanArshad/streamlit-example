@@ -47,4 +47,4 @@ df = pd.DataFrame(selected)
 if st.button("Generate Chart"):
     st.bar_chart(data_till["BMS"])
 if st.button(" Generate Line Chart"):
-    st.line_chart(data=data_till, x='Location', y='BMs_UOM', width=10, height=10, use_container_width=True)
+    st.line_chart(data=data_till, x='Location', y='BMs_per_UOM', width=10, height=10, use_container_width=True)
