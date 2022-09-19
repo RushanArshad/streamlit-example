@@ -48,5 +48,5 @@ if st.button("Generate Chart"):
     st.bar_chart(data_till["BMS"])
 if st.button(" Generate Line Chart"):
     st.line_chart(data=data_till, x='Location', y='BMs_per_UOM', width=5, height=5, use_container_width=True)
-if st.button("Generate Map"):
-    st.map(data=data_till, zoom=None, use_container_width=True)
+if st.button("Generate Area"):
+    st.area_chart(data=data_till, x='Location', y='BMs_per_UOM', width=5, height=5, use_container_width=True)
