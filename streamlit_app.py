@@ -44,4 +44,4 @@ df = pd.DataFrame(selected)
 #char_df= pd.DataFrame(a1,a2)
 #st.line_chart(selected)
 
-st.map(data=data_front, zoom=None, use_container_width=True)
+st.map(data=d'data_front', zoom=None, use_container_width=True)
