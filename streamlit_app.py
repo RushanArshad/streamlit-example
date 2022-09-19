@@ -35,9 +35,9 @@ if st.button("Populate Grid Data"):
         reload_data=True
     )
 
-data_front = grid_response['data']
-selected = grid_response['selected_rows'] 
-df = pd.DataFrame(selected)
+    data_front = grid_response['data']
+    selected = grid_response['selected_rows'] 
+    df = pd.DataFrame(selected)
 
 #time_spent = data_front.groupby(["Location"]).BMS.sum().reset_index()
 #a1 = data_front["Location"]
