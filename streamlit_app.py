@@ -49,4 +49,4 @@ if st.button("Generate Bar Chart"):
 if st.button(" Generate Line Chart"):
     st.line_chart(data=data_till, x='Location', y='BMs_per_UOM', width=0, height=0, use_container_width=True)
 if st.button("Generate Area"):
-    st.area_chart(data=data_till, x='Location', y='BMs_per_UOM', width=0, height=0, use_container_width=True)
+    st.area_chart(data=data_till, x='Location', y=['BMs_per_UOM','BMS','Obs_Time'], width=0, height=0, use_container_width=True)
